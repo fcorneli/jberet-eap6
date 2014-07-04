@@ -22,7 +22,7 @@
 		</version.org.jboss.spec.javax.batch.jboss-batch-api_1.0_spec>
 		<version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.1_spec>1.0.1.Final</version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.1_spec>
 		<version.org.jboss.logging.jboss-logging>3.1.2.GA</version.org.jboss.logging.jboss-logging>
-		<version.org.jberet.jberet-core>1.1.0.Alpha2-SNAPSHOT</version.org.jberet.jberet-core>
+		<version.org.jberet.jberet-core>1.1.0.Alpha2.r1</version.org.jberet.jberet-core>
 		<version.org.jboss.logging.jboss-logging-processor>1.1.0.Final</version.org.jboss.logging.jboss-logging-processor>
 		<version.org.jboss.msc.jboss-msc>1.0.4.GA</version.org.jboss.msc.jboss-msc>
 	</properties>
@@ -128,6 +128,16 @@
 		<repository>
 			<id>jboss</id>
 			<url>http://maven.repository.redhat.com/techpreview/all/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>e-contract</id>
+			<url>https://www.e-contract.be/maven2/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
