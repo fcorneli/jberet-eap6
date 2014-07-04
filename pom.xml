@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.jboss</groupId>
+		<artifactId>jboss-parent</artifactId>
+		<version>10</version>
+	</parent>
+
+	<groupId>org.jberet</groupId>
+	<artifactId>eap6</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>JBeret EAP6 Batch Integration</name>
+
+	<properties>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<version.org.jboss.spec.javax.batch.jboss-batch-api_1.0_spec>1.0.0.Final
+		</version.org.jboss.spec.javax.batch.jboss-batch-api_1.0_spec>
+		<version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.1_spec>1.0.1.Final</version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.1_spec>
+		<version.org.jboss.logging.jboss-logging>3.1.2.GA</version.org.jboss.logging.jboss-logging>
+		<version.org.jberet.jberet-core>1.1.0.Alpha2-SNAPSHOT</version.org.jberet.jberet-core>
+		<version.org.jboss.logging.jboss-logging-processor>1.1.0.Final</version.org.jboss.logging.jboss-logging-processor>
+		<version.org.jboss.msc.jboss-msc>1.0.4.GA</version.org.jboss.msc.jboss-msc>
+	</properties>
+
+
+	<modules>
+		<module>eap6-jberet</module>
+		<module>eap6-batch</module>
+		<module>eap6-batch-dist</module>
+		<module>eap6-batch-tests</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jberet</groupId>
+			<artifactId>jberet-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging-processor</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.msc</groupId>
+			<artifactId>jboss-msc</artifactId>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<!-- based on org.jboss.as:jboss-as-parent:7.2.0.Final:pom -->
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+				<artifactId>jboss-javaee-all-6.0</artifactId>
+				<version>3.0.2.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.spec.javax.batch</groupId>
+				<artifactId>jboss-batch-api_1.0_spec</artifactId>
+				<version>${version.org.jboss.spec.javax.batch.jboss-batch-api_1.0_spec}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.spec.javax.transaction</groupId>
+				<artifactId>jboss-transaction-api_1.1_spec</artifactId>
+				<version>${version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.1_spec}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jberet</groupId>
+				<artifactId>jberet-core</artifactId>
+				<version>${version.org.jberet.jberet-core}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.logging</groupId>
+				<artifactId>jboss-logging</artifactId>
+				<version>${version.org.jboss.logging.jboss-logging}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.logging</groupId>
+				<artifactId>jboss-logging-processor</artifactId>
+				<version>${version.org.jboss.logging.jboss-logging-processor}</version>
+				<!-- Only needed during build time for the annotation processor -->
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.msc</groupId>
+				<artifactId>jboss-msc</artifactId>
+				<version>${version.org.jboss.msc.jboss-msc}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.as</groupId>
+				<artifactId>jboss-as-security</artifactId>
+				<version>7.2.0.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.1.5.Final</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.as</groupId>
+				<artifactId>jboss-as-arquillian-container-remote</artifactId>
+				<version>7.2.0.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.as</groupId>
+				<artifactId>jboss-as-subsystem-test-framework</artifactId>
+				<version>7.3.4.Final-redhat-1</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>jboss</id>
+			<url>http://maven.repository.redhat.com/techpreview/all/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+</project>

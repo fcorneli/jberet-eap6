@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.1" name="javax.batch.api">
+	<resources>
+		<resource-root
+			path="jboss-batch-api_1.0_spec-${version.org.jboss.spec.javax.batch.jboss-batch-api_1.0_spec}.jar" />
+	</resources>
+	<dependencies>
+		<module name="javax.api" />
+		<module name="javax.enterprise.api" />
+	</dependencies>
+</module>
