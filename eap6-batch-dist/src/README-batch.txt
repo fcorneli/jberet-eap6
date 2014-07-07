@@ -6,6 +6,8 @@ Batch API for EAP6
 
 Unzip under the jboss-eap-6.2 directory.
 
+When upgrading, make sure to overwrite all existing files.
+
 
 === 2. Configuration
 
