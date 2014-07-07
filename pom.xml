@@ -27,7 +27,6 @@
 		<version.org.jboss.msc.jboss-msc>1.0.4.GA</version.org.jboss.msc.jboss-msc>
 	</properties>
 
-
 	<modules>
 		<module>eap6-jberet</module>
 		<module>eap6-batch</module>
@@ -146,5 +145,32 @@
 			</snapshots>
 		</repository>
 	</repositories>
+
+	<scm>
+		<developerConnection>scm:git:git@github.com:fcorneli/jberet-eap6.git</developerConnection>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>e-contract.be</id>
+			<url>sftp://e-contract.be/maven2</url>
+		</repository>
+		<site>
+			<id>e-contract-site</id>
+			<url>sftp://e-contract.be/sites/jberet-eap6/</url>
+		</site>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
