@@ -135,6 +135,10 @@
 			</snapshots>
 		</repository>
 		<repository>
+			<id>jboss-releases</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+		</repository>
+		<repository>
 			<id>e-contract</id>
 			<url>https://www.e-contract.be/maven2/</url>
 			<releases>
