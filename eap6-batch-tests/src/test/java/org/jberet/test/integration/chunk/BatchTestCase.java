@@ -1,6 +1,7 @@
 package org.jberet.test.integration.chunk;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -18,7 +19,9 @@ public class BatchTestCase {
 		JavaArchive jar = ShrinkWrap
 				.create(JavaArchive.class, "test.jar")
 				.addClasses(MyTestItemReader.class, MyTestItemProcessor.class,
-						MyTestItemWriter.class, ChunkBean.class, MyEntity.class)
+						MyTestItemWriter.class, ChunkBean.class,
+						MyEntity.class, ChunkController.class,
+						FoobarException.class)
 				.addAsManifestResource(
 						BatchTestCase.class.getResource("/batch.xml"),
 						"batch.xml")
@@ -37,8 +40,20 @@ public class BatchTestCase {
 	@EJB
 	private ChunkBean chunkBean;
 
+	@Inject
+	private ChunkController chunkController;
+
 	@Test
 	public void testChunkedBatchJob() throws Exception {
+		this.chunkBean.initData();
+		long executionId = this.chunkBean.startJob();
+		this.chunkBean.waitForJobFinished(executionId);
+		this.chunkBean.verifyProcessing();
+	}
+
+	@Test
+	public void testRestart() throws Exception {
+		this.chunkController.explodeAtIndex(18);
 		this.chunkBean.initData();
 		long executionId = this.chunkBean.startJob();
 		this.chunkBean.waitForJobFinished(executionId);

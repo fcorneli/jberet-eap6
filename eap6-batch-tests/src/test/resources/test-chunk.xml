@@ -8,6 +8,9 @@
 			<reader ref="myTestItemReader" />
 			<processor ref="myTestItemProcessor" />
 			<writer ref="myTestItemWriter" />
+			<retryable-exception-classes>
+				<include class="org.jberet.test.integration.chunk.FoobarException" />
+			</retryable-exception-classes>
 		</chunk>
 		<end on="*" />
 	</step>

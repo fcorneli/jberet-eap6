@@ -11,6 +11,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -35,6 +36,9 @@ public class ChunkBean {
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void initData() {
+		Query query = this.entityManager.createQuery("DELETE FROM MyEntity");
+		query.executeUpdate();
+
 		int count = 97;
 		while (count-- != 0) {
 			MyEntity myEntity = new MyEntity("value " + count);
