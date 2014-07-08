@@ -35,6 +35,10 @@ public class MyTestItemReader implements ItemReader {
 		} else {
 			this.index = 0;
 		}
+		initIterator();
+	}
+
+	private void initIterator() {
 		CriteriaBuilder criteriaBuilder = this.entityManager
 				.getCriteriaBuilder();
 		CriteriaQuery<MyEntity> criteriaQuery = criteriaBuilder
@@ -60,6 +64,12 @@ public class MyTestItemReader implements ItemReader {
 		if (this.iterator.hasNext()) {
 			this.index++;
 			return this.iterator.next();
+		} else {
+			initIterator();
+			if (this.iterator.hasNext()) {
+				this.index++;
+				return this.iterator.next();
+			}
 		}
 		return null;
 	}

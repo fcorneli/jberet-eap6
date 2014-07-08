@@ -35,7 +35,7 @@ public class ChunkBean {
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void initData() {
-		int count = 10;
+		int count = 97;
 		while (count-- != 0) {
 			MyEntity myEntity = new MyEntity("value " + count);
 			this.entityManager.persist(myEntity);
@@ -51,7 +51,7 @@ public class ChunkBean {
 			throws InterruptedException {
 		while (this.jobOperator.getJobExecution(executionId).getBatchStatus() != BatchStatus.COMPLETED) {
 			LOGGER.debug("waiting");
-			Thread.sleep(100);
+			Thread.sleep(10);
 		}
 	}
 
@@ -67,6 +67,9 @@ public class ChunkBean {
 		List<MyEntity> resultList = typedQuery.getResultList();
 		for (MyEntity myEntity : resultList) {
 			LOGGER.debug("result: " + myEntity.getValue());
+			if (!myEntity.getValue().startsWith("processed:")) {
+				throw new RuntimeException("not everything was processed");
+			}
 		}
 	}
 }
