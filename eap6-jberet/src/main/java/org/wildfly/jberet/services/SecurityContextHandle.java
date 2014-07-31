@@ -5,6 +5,7 @@ import java.security.PrivilegedAction;
 
 import org.jboss.security.SecurityContext;
 import org.jboss.security.SecurityContextAssociation;
+import org.wildfly.security.manager.WildFlySecurityManager;
 
 /**
  * @author <a href="mailto:jperkins@redhat.com">James R. Perkins</a>
@@ -29,7 +30,7 @@ class SecurityContextHandle implements ContextHandle {
     }
 
     private static SecurityContext getSecurityContext() {
-        if (isChecking()) {
+        if (WildFlySecurityManager.isChecking()) {
             return AccessController.doPrivileged(new PrivilegedAction<SecurityContext>() {
                 @Override
                 public SecurityContext run() {
@@ -41,7 +42,7 @@ class SecurityContextHandle implements ContextHandle {
     }
 
     private static void setSecurityContext(final SecurityContext securityContext) {
-        if (isChecking()) {
+        if (WildFlySecurityManager.isChecking()) {
             AccessController.doPrivileged(new PrivilegedAction<Void>() {
                 @Override
                 public Void run() {
@@ -52,9 +53,5 @@ class SecurityContextHandle implements ContextHandle {
         } else {
             SecurityContextAssociation.setSecurityContext(securityContext);
         }
-    }
-    
-    static boolean isChecking() {
-    	return System.getSecurityManager() != null;
     }
 }

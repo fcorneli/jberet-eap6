@@ -22,20 +22,18 @@
 
 package org.wildfly.jberet;
 
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.Properties;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Future;
-
 import javax.transaction.TransactionManager;
 
 import org.jberet.repository.JobRepository;
 import org.jberet.spi.ArtifactFactory;
 import org.jberet.spi.BatchEnvironment;
 import org.wildfly.jberet._private.WildFlyBatchLogger;
+import org.wildfly.security.manager.WildFlySecurityManager;
 
 /**
  * @author <a href="mailto:jperkins@redhat.com">James R. Perkins</a>
@@ -101,7 +99,7 @@ public class BatchEnvironmentFactory {
     }
 
     public BatchEnvironment getBatchEnvironment() {
-        return getBatchEnvironment(getContextClassLoader());
+        return getBatchEnvironment(WildFlySecurityManager.getCurrentContextClassLoaderPrivileged());
     }
 
     public BatchEnvironment getBatchEnvironment(final ClassLoader cl) {
@@ -113,7 +111,7 @@ public class BatchEnvironmentFactory {
     }
 
     public void add(final BatchEnvironment batchEnvironment) {
-        add(getContextClassLoader(), batchEnvironment);
+        add(WildFlySecurityManager.getCurrentContextClassLoaderPrivileged(), batchEnvironment);
     }
 
     public void add(final ClassLoader cl, final BatchEnvironment batchEnvironment) {
@@ -121,22 +119,10 @@ public class BatchEnvironmentFactory {
     }
 
     public BatchEnvironment remove() {
-        return remove(getContextClassLoader());
+        return remove(WildFlySecurityManager.getCurrentContextClassLoaderPrivileged());
     }
 
     public BatchEnvironment remove(final ClassLoader cl) {
         return environments.remove(cl);
-    }
-    
-    static ClassLoader getContextClassLoader() {
-        if (System.getSecurityManager() != null) {
-            return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
-                public ClassLoader run() {
-                    return Thread.currentThread().getContextClassLoader();
-                }
-            });
-        } else {
-            return Thread.currentThread().getContextClassLoader();
-        }
     }
 }

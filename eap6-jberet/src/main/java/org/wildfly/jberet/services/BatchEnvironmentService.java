@@ -22,13 +22,10 @@
 
 package org.wildfly.jberet.services;
 
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.Properties;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
-
 import javax.enterprise.inject.spi.BeanManager;
 import javax.transaction.TransactionManager;
 
@@ -45,6 +42,7 @@ import org.wildfly.jberet.WildFlyArtifactFactory;
 import org.wildfly.jberet._private.WildFlyBatchLogger;
 import org.wildfly.jberet.services.ContextHandle.ChainedContextHandle;
 import org.wildfly.jberet.services.ContextHandle.Handle;
+import org.wildfly.security.manager.WildFlySecurityManager;
 
 /**
  * @author <a href="mailto:jperkins@redhat.com">James R. Perkins</a>
@@ -200,23 +198,11 @@ public class BatchEnvironmentService implements Service<BatchEnvironment> {
         }
 
         private ContextHandle createContextHandle() {
-            final ClassLoader tccl = getContextClassLoader();
+            final ClassLoader tccl = WildFlySecurityManager.getCurrentContextClassLoaderPrivileged();
             // If the TCCL is null, use the deployments ModuleClassLoader
             final ClassLoaderContextHandle classLoaderContextHandle = (tccl == null ? new ClassLoaderContextHandle(classLoader) : new ClassLoaderContextHandle(tccl));
             // Class loader handle must be first so the TCCL is set before the other handles execute
             return new ChainedContextHandle(classLoaderContextHandle, new NamespaceContextHandle(), new SecurityContextHandle());
-        }
-        
-        private ClassLoader getContextClassLoader() {
-            if (System.getSecurityManager() != null) {
-                return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
-                    public ClassLoader run() {
-                        return Thread.currentThread().getContextClassLoader();
-                    }
-                });
-            } else {
-                return Thread.currentThread().getContextClassLoader();
-            }
         }
     }
 }
