@@ -5,6 +5,7 @@ Backport of Batch API subsystem to EAP6
 
 ## Downloads
 
+* [eap6-batch-dist-1.0.1.zip](http://www.e-contract.be/maven2/org/jberet/eap6/eap6-batch-dist/1.0.1/eap6-batch-dist-1.0.1.zip)
 * [eap6-batch-dist-1.0.0.zip](http://www.e-contract.be/maven2/org/jberet/eap6/eap6-batch-dist/1.0.0/eap6-batch-dist-1.0.0.zip)
 
 
@@ -44,6 +45,17 @@ Build the project via:
 ```
 mvn clean install
 ```
+
+## Release
+
+We're using the [Maven Release Plugin](http://maven.apache.org/maven-release/maven-release-plugin/) for the release management.
+Release the project via:
+```
+mvn release:prepare
+mvn release:perform
+```
+The artifact are available within the [e-Contract.be Maven Repository](https://www.e-contract.be/maven2/).
+There is also a [Maven Project Site](https://www.e-contract.be/sites/jberet-eap6/) being deployed.
 
 
 ## References
