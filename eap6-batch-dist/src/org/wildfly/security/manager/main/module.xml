@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.1" name="org.wildfly.security.manager">
+    <properties>
+        <property name="jboss.api" value="private"/>
+    </properties>
+
+    <exports>
+        <exclude path="org/jboss/wildfly/security/manager/_private"/>
+    </exports>
+
+    <resources>
+        <resource-root path="wildfly-security-manager-${version.org.wildfly.security.wildfly-security-manager}.jar"/>
+    </resources>
+
+    <dependencies>
+        <module name="org.jboss.logging"/>
+        <module name="org.jboss.modules"/>
+        <module name="javax.api"/>
+        <module name="sun.jdk"/>
+    </dependencies>
+</module>

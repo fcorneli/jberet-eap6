@@ -35,6 +35,12 @@
 			</includes>
 			<outputDirectory>modules/system/layers/base/javax/batch/api/main</outputDirectory>
 		</dependencySet>
+		<dependencySet>
+			<includes>
+				<include>org.wildfly.security:wildfly-security-manager</include>
+			</includes>
+			<outputDirectory>modules/system/layers/base/org/wildfly/security/manager/main</outputDirectory>
+		</dependencySet>
 	</dependencySets>
 
 	<fileSets>
@@ -45,6 +51,7 @@
 				<include>org/wildfly/jberet/main/module.xml</include>
 				<include>org/wildfly/extension/batch/main/module.xml</include>
 				<include>javax/batch/api/main/module.xml</include>
+				<include>org/wildfly/security/manager/main/module.xml</include>
 			</includes>
 			<filtered>true</filtered>
 			<outputDirectory>modules/system/layers/base</outputDirectory>
