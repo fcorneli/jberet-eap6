@@ -10,7 +10,7 @@
 
 	<groupId>org.jberet</groupId>
 	<artifactId>eap6</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>JBeret EAP6 Batch Integration</name>
@@ -177,7 +177,7 @@
 		<connection>scm:git:git@github.com:fcorneli/jberet-eap6.git</connection>
 		<developerConnection>scm:git:git@github.com:fcorneli/jberet-eap6.git</developerConnection>
 		<url>https://github.com/fcorneli/jberet-eap6</url>
-		<tag>1.0.2</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>

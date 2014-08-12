@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.jberet</groupId>
 		<artifactId>eap6</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.3-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.jberet.eap6</groupId>
