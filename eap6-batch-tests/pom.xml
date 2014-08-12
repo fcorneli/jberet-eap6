@@ -10,6 +10,8 @@
 
 	<groupId>org.jberet.eap6</groupId>
 	<artifactId>eap6-tests</artifactId>
+	
+	<name>EAP6 JBeret Batch API integration tests</name>
 
 	<build>
 		<plugins>

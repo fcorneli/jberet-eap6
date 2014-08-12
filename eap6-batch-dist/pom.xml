@@ -11,6 +11,8 @@
 	<groupId>org.jberet.eap6</groupId>
 	<artifactId>eap6-batch-dist</artifactId>
 	<packaging>pom</packaging>
+	
+	<name>EAP6 JBeret Batch API distribution</name>
 
 	<build>
 		<plugins>

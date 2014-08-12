@@ -1,0 +1,10 @@
+Introduction
+
+  Welcome to the Maven site of the JBeret Batch API for EAP6.
+  
+  More documentation is available at: {{{https://github.com/fcorneli/jberet-eap6}GitHub jberet-eap6}}.
+  
+
+* Download
+
+  {{{http://www.e-contract.be/maven2/org/jberet/eap6/eap6-batch-dist/${project.version}/eap6-batch-dist-${project.version}.zip}eap6-batch-dist-${project.version}.zip}}.

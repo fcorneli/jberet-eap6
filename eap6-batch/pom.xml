@@ -10,6 +10,8 @@
 
 	<groupId>org.jberet.eap6</groupId>
 	<artifactId>eap6-batch</artifactId>
+	
+	<name>WildFly Batch/Extension backport</name>
 
 	<dependencies>
 		<dependency>
