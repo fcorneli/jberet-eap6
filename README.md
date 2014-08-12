@@ -7,6 +7,7 @@ Tested on JBoss EAP 6.2.4 and 6.3.
 
 ## Downloads
 
+* [eap6-batch-dist-1.0.2.zip](http://www.e-contract.be/maven2/org/jberet/eap6/eap6-batch-dist/1.0.2/eap6-batch-dist-1.0.2.zip)
 * [eap6-batch-dist-1.0.1.zip](http://www.e-contract.be/maven2/org/jberet/eap6/eap6-batch-dist/1.0.1/eap6-batch-dist-1.0.1.zip)
 * [eap6-batch-dist-1.0.0.zip](http://www.e-contract.be/maven2/org/jberet/eap6/eap6-batch-dist/1.0.0/eap6-batch-dist-1.0.0.zip)
 
