@@ -2,6 +2,8 @@
 
 Backport of Batch API subsystem to EAP6
 
+Tested on JBoss EAP 6.2.4 and 6.3.
+
 
 ## Downloads
 
